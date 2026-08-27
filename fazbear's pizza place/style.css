@@ -1,0 +1,424 @@
+/* --- CONFIGURAÇÕES GERAIS (TEMA RESTAURANTE PREMIUM) --- */
+:root {
+    --neon-purple: #ff0000;
+    --neon-blue: #00ffff;
+    --neon-red: #ff0055;
+    --bg-dark: #09090d;
+    --panel-dark: rgba(20, 20, 28, 0.75); /* Translúcido estilo premium */
+    --text-gold: #ffcc00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    user-select: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Janela Principal - Atmosfera de Restaurante Escuro com Neon */
+.game-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(27, 27, 38, 0.4) 0%, #050508 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Parede de Tijolos em Código */
+.animatronics-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0f0f14;
+    background-image: 
+        linear-gradient(335deg, #08080a 23px, transparent 23px),
+        linear-gradient(155deg, #08080a 23px, transparent 23px),
+        linear-gradient(335deg, #08080a 23px, transparent 23px),
+        linear-gradient(155deg, #08080a 23px, transparent 23px);
+    background-size: 58px 58px;
+    background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* --- INTERFACE DO MENU PRINCIPAL --- */
+.menu-content {
+    text-align: center;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+    max-width: 650px;
+}
+
+.menu-content.blur-menu {
+    filter: blur(10px) brightness(0.4);
+    transform: scale(0.95);
+}
+
+.game-header { margin-bottom: 40px; }
+
+.game-title {
+    font-size: 4.0rem;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple);
+    animation: neonPulse 2s infinite alternate;
+}
+
+.pizzeria-edition {
+    display: inline-block;
+    color: var(--neon-blue);
+    font-size: 1.2rem;
+    margin-top: 15px;
+    letter-spacing: 6px;
+    text-shadow: 0 0 8px var(--neon-blue);
+}
+
+.game-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-option-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    color: #bbb;
+    padding: 14px 40px;
+    width: 300px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-option-btn:hover {
+    color: #fff;
+    background: rgba(138, 43, 226, 0.15);
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+    transform: translateY(-2px);
+}
+
+.sub-night {
+    color: #444;
+    font-size: 0.95rem;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+
+/* =======================================================
+   NNEVA INTERFACE DO CARDÁPIO (LOUNGE STYLE) 
+   ======================================================= */
+.tablet-monitor {
+    position: absolute;
+    bottom: -100%;
+    left: 4%;
+    width: 92%;
+    height: 85%;
+    background: var(--panel-dark);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+    border-radius: 32px 32px 0 0;
+    z-index: 10;
+    backdrop-filter: blur(20px); /* Efeito vidro fosco profissional */
+    transition: bottom 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 -20px 50px rgba(0,0,0,0.9), inset 0 1px 2px rgba(255,255,255,0.1);
+}
+
+.tablet-monitor.open { bottom: 0; }
+
+.camera-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Localizador do Setor */
+.camera-tag {
+    position: absolute;
+    top: 25px;
+    left: 50px;
+    color: #fff;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--neon-blue);
+    padding-bottom: 5px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Painel Esquerdo: Bloco de Destaque da Pizza */
+.camera-content {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.pizza-card {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Linha decorativa de neon no topo do card de exibição */
+.pizza-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+}
+
+.pizza-card h3 {
+    color: #fff;
+    font-size: 2.6rem;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.pizza-card p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 1.15rem;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif; /* Preservada apenas para blocos de texto não cansarem a vista */
+    text-transform: none;
+}
+
+.pizza-price {
+    display: inline-block;
+    color: var(--text-gold);
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
+}
+
+/* Painel Direito: Lista de Seleção Premium */
+.map-panel {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.map-layout-lines {
+    color: #777;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* Botões Estilo Comandos Digitais de Vidro */
+.cam-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    color: #888;
+    padding: 16px 24px;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cam-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Botão Selecionado com Efeito Neon Pulsante */
+.cam-btn.active {
+    background: rgba(138, 43, 226, 0.15);
+    color: #fff;
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.4), inset 0 0 10px rgba(138, 43, 226, 0.2);
+    text-shadow: 0 0 8px #fff;
+}
+
+/* Indicador visual sutil dentro do botão ativo */
+.cam-btn.active::after {
+    content: '●';
+    color: var(--neon-blue);
+    font-size: 0.8rem;
+    animation: blinker 1s infinite alternate;
+}
+
+/* Puxador do Cardápio Customizado */
+.tablet-flip-trigger {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(20, 20, 28, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+    padding: 16px 50px;
+    cursor: pointer;
+    z-index: 15;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.5);
+    transition: all 0.3s;
+}
+
+.tablet-flip-trigger:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 -5px 20px rgba(138, 43, 226, 0.4);
+}
+
+.flip-icon {
+    color: #fff;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+}
+
+/* --- MODAIS --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(5, 5, 8, 0.85);
+    z-index: 20;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+}
+
+.modal-overlay.active { display: flex; }
+
+.contrato-paper, .vagas-badge {
+    background: #14141c;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: #fff;
+    width: 90%;
+    max-width: 460px;
+    padding: 40px;
+}
+
+.contrato-paper h2 { font-size: 2.2rem; text-align: center; margin-bottom: 10px; letter-spacing: 1px; }
+.contrato-paper h3, .badge-header { font-size: 1.2rem; text-align: center; margin-bottom: 25px; color: var(--text-gold); letter-spacing: 1px; }
+.contrato-text { font-size: 1.05rem; color: #888; margin-bottom: 25px; text-align: center; font-family: Arial, sans-serif; text-transform: none; }
+
+.contrato-form { display: flex; flex-direction: column; gap: 18px; }
+.contrato-form label { font-size: 1.1rem; color: #aaa; letter-spacing: 1px; }
+
+.contrato-form input {
+    background: rgba(0,0,0,0.3);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.contrato-form input:focus { outline: none; border-color: var(--neon-purple); }
+
+.contrato-actions { display: flex; justify-content: space-between; margin-top: 15px; }
+.contrato-actions button { padding: 14px 28px; border-radius: 10px; cursor: pointer; border: none; font-size: 1.2rem; letter-spacing: 1px; }
+.btn-cancel { background: #222; color: #aaa; }
+.btn-sign { background: var(--neon-purple); color: #fff; }
+
+/* Animações Auxiliares */
+@keyframes neonPulse {
+    0% { text-shadow: 0 0 10px var(--neon-purple), 0 0 15px var(--neon-purple); }
+    100% { text-shadow: 0 0 15px var(--neon-purple), 0 0 30px var(--neon-purple); }
+}
+
+@keyframes blinker {
+    0% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+.impact-shake { animation: menuShake 0.15s ease-in-out; }
+@keyframes menuShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+.crt-scanlines {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+    background-size: 100% 4px;
+    pointer-events: none; z-index: 99;
+}
+
+/* --- POSICIONAMENTO EXATO DENTRO DOS CÍRCULOS DA FOTO --- */
+/* --- POSICIONAMENTO E ÂNGULO DOS ANIMATRONICS --- */
+.character-left, .character-right {
+    position: absolute;
+    top: 10%; 
+    width: 1100px; 
+    height: -0px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.8; 
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* Personagem da Esquerda: Inclinado sutilmente para a direita (olhando para o menu) */
+.character-left {
+    left: 6%; 
+    /* rotate(5deg) inclina de lado, rotateY(15deg) gira em 3D em direção ao centro */
+    transform: rotate(0deg) rotateY(20deg); 
+}
+
+/* Personagem da Direita: Inclinado sutilmente para a esquerda (olhando para o menu) */
+.character-right {
+    right: 6%; 
+    /* rotate(-5deg) inclina para o outro lado, rotateY(-15deg) gira em 3D para o centro */
+    transform: rotate(-4deg) rotateY(-20deg); 
+}
+
+/* Garante que a imagem respeite o ângulo e adiciona a aura neon */
+.character-left img, .character-right img {
+    max-width: 300px;
+    max-height: 400px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 25px rgba(138, 43, 226, 0.5)); 
+}
+
+/* Quando o cardápio subir, eles desaparecem suavemente */
+.menu-content.blur-menu ~ .character-left,
+.menu-content.blur-menu ~ .character-right {
+    filter: brightness(0) blur(5px);
+    opacity: 0;
+}
