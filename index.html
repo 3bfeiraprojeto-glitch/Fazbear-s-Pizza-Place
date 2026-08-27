@@ -1,143 +1,253 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Freddy's Pizzaria - Experiência Temática</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
 
     <div class="game-viewport" id="viewport">
+
         <!-- Linhas de varredura sutis na iluminação do ambiente -->
+
         <div class="crt-scanlines"></div>
+
         <div class="vhs-static"></div>
 
                 <!-- Parede de tijolos de fundo -->
+
                 <div class="animatronics-bg"></div>
 
                 <!-- Personagens puxando direto do seu computador -->
+
                 <div class="character-left">
-                    <img src="freddy.gif"  alt="Freddy Fazbear">
+
+                    <img src="assets/imagem/freddy.gif"  alt="Freddy Fazbear">
+
                 </div>
-                
+
                 <div class="character-right">
-                    <img src="bonnie.png"">
+
+                    <img src="assets/imagem/bonnie.png">
+
                 </div>
-        
-      
+
+
+
+
+
+
+
+
 
                 <!-- Interface do Menu Principal -->
+
                 <main class="menu-content" id="main-menu">
+
                     <header class="game-header">
+
                         <h1 class="game-title" id="freddy-nose">Fazbear's<br>Pizza Place</h1>
+
                         <span class="pizzeria-edition">THE DINING EXPERIENCE</span>
+
                     </header>
-        
+
                     <nav class="game-nav">
+
                         <button class="nav-option-btn" id="btn-pedido">Reservar Mesa</button>
-                        
+
                         <!-- Corrigido o grupo para o texto não desalinhar -->
+
                         <div class="continue-group">
+
                             <button class="nav-option-btn" id="btn-cardapio">Menu Digital</button>
+
                         </div>
-        
+
                         <button class="nav-option-btn" id="btn-vagas">Trabalhe Conosco</button>
+
                     </nav>
+
                 </main>
-        
+
                 <!-- POSIÇÃO CORRETA: Personagens inseridos DEPOIS do main -->
+
                 <div class="character-left">
-                    <img src="freddy.gif" alt="Freddy">
+
+                    <img src="assets/imagem/freddy.gif" alt="Freddy">
+
                 </div>
-                
-                
-        
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- Formulário de Reserva / Pedidos VIP -->
+
         <div class="modal-overlay" id="modal-contrato">
+
             <div class="contrato-paper">
+
                 <h2>RESERVA DE MESA EXCLUSIVA</h2>
+
                 <h3>Fazbear Entertainment Premium</h3>
+
                 <p class="contrato-text">
+
                     Garanta seu lugar na pizzaria temática mais imersiva da cidade. Desfrute de nossos shows robóticos, iluminação cênica e pizzas artesanais em um ambiente totalmente climatizado e seguro.
+
                 </p>
+
                 <form class="contrato-form" id="form-pedido">
+
                     <label>NOME COMPLETO DO VISITANTE:</label>
+
                     <input type="text" required placeholder="Digite seu nome">
-                    
+
                     <label>TELEFONE DE CONTATO:</label>
+
                     <input type="tel" required placeholder="(11) 99999-0000">
 
                     <label>SETOR DESEJADO PARA SENTAR:</label>
+
                     <input type="text" required placeholder="Ex: Salão Principal, Enseada Pirata">
 
                     <div class="contrato-actions">
+
                         <button type="button" class="btn-cancel" id="fechar-contrato">CANCELAR</button>
+
                         <button type="submit" class="btn-sign">CONFIRMAR RESERVA</button>
+
                     </div>
+
                 </form>
+
             </div>
+
         </div>
 
         <!-- Ficha de Contratação (Trabalhe Conosco) -->
+
         <div class="modal-overlay" id="modal-vagas">
+
             <div class="vagas-badge">
+
                 <div class="badge-header">FAZBEAR TEAM</div>
+
                 <div class="badge-body">
+
                     <form class="badge-form" id="form-vagas">
+
                         <label>NOME COMPLETO:</label>
+
                         <input type="text" required placeholder="Seu nome completo">
+
                         <label>CARGO DE INTERESSE:</label>
+
                         <input type="text" required placeholder="Ex: Atendente, Pizzaiolo, Hostess">
+
                         <div class="badge-id">CÓDIGO DE ENVIO: #FZ-2026</div>
+
                         <div class="contrato-actions" style="margin-top: 15px;">
+
                             <button type="button" class="btn-cancel" id="fechar-vagas">VOLTAR</button>
+
                             <button type="submit" class="btn-sign" style="background: #004400; box-shadow: none;">ENVIAR CURRÍCULO</button>
+
                         </div>
+
                     </form>
+
                 </div>
+
             </div>
+
         </div>
 
         <!-- Painel Digital de Salões (Cardápio Interativo) -->
+
         <div class="tablet-monitor" id="tablet">
+
             <div class="camera-screen">
+
                 <div class="camera-tag" id="cam-tag">SALÃO 01 - PALCO SHOWTIME</div>
-                
+
                 <div class="camera-content" id="cam-feed">
+
                     <div class="pizza-card">
+
                         <h3>PIZZA TOY FREDDY (PEPPERONI)</h3>
+
                         <p>Muito queijo, pepperoni fatiado de forma cirúrgica e borda recheada de pânico. O maior sucesso das madrugadas que vai fazer você querer morder 83 vezes.</p>
+
                         <span class="pizza-price">R$ 59,90</span>
+
                     </div>
+
                 </div>
 
                   <div class="map-panel">
+
                     <div class="map-layout-lines">ÁREAS DO RESTAURANTE</div>
+
                     <button class="cam-btn active" data-cam="1" data-tag="SALÃO 01 - PALCO SHOWTIME">SALÃO PRINCIPAL</button>
+
                     <button class="cam-btn" data-cam="2" data-tag="SALÃO 02 - CHICA'S CORNER">CANTINHO DA CHICA</button>
+
                     <button class="cam-btn" data-cam="3" data-tag="SALÃO 03 - ENSEADA PIRATA VIP">ENSEADA PIRATA</button>
+
                     <button class="cam-btn" data-cam="4" data-tag="SALÃO 04 - BACKSTAGE LOUNGE">SALA DOS FUNDOS</button>
+
                     <button class="cam-btn" data-cam="5" data-tag="SALÃO 05 - PORÃO DO WILLIAM (RESERVADO)">SALA DO PROPRIETÁRIO</button>
+
                 </div>
 
             </div>
+
         </div>
 
         <!-- Aba de puxar o Painel -->
+
         <div class="tablet-flip-trigger" id="tablet-trigger">
+
             <div class="flip-icon">▼ VER CARDÁPIO & AMBIENTES ▼</div>
+
         </div>
+
     </div>
 
     <!-- Áudios Locais Configurados -->
-    <audio id="honk-sound" src="buzina.mp3.mp3" preload="auto"></audio>
-    <audio id="ambient-music" src="musica.mp3" loop preload="auto"></audio>
-    <audio id="cam-blip" src="abrircamera.mp3" preload="auto"></audio>
-    <audio id="click-sound" src="buzina.mp3.mp3" preload="auto"></audio>
+
+    <audio id="honk-sound" src="assets/audio/buzina.mp3" preload="auto"></audio>
+
+    <audio id="ambient-music" src="assets/audio/musica.mp3" loop preload="auto"></audio>
+
+    <audio id="cam-blip" src="assets/audio/abrircamera.mp3" preload="auto"></audio>
+
+    <audio id="click-sound" src="assets/audio/buzina.mp3" preload="auto"></audio>
 
     <!-- Importação do arquivo de lógica -->
-    <script src="script.js"></script>
+
+    <script src="js/script.js"></script>
+
 </body>
+
 </html>
