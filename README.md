@@ -1,30 +1,210 @@
-# FAZBEAR'S PIZZA PLACE
+# Guia de Git, Commits, Branch e Pull Request
 
-## Guia de Organização do Projeto e Comandos Git
+Guia rápido para trabalhar com Git 
 
-Este documento tem como objetivo orientar os integrantes da equipe sobre a organização do projeto, os locais corretos para adicionar arquivos e a utilização dos principais comandos do Git.
+## Git básico
+
+### Iniciar o Git
+
+```bash
+git init
+git status
+git add .
+git commit -m "primeiro commit"
+```
+
+* `git init` → inicia o Git
+* `git status` → verifica alterações
+* `git add .` → prepara os arquivos
+* `git commit` → registra as alterações
 
 ---
 
-# 1. Estrutura do projeto
+# Conventional Commits
 
-A estrutura atual do projeto é:
+Use commits padronizados para manter o histórico do projeto organizado.
+
+### Estrutura
+
+```text
+tipo(escopo): descrição
+```
+
+### Exemplos
+
+```text
+feat(profile): adiciona histórico de pedidos
+fix(login): corrige erro no botão entrar
+docs(readme): atualiza instruções
+refactor(api): reorganiza funções
+style(header): ajusta alinhamento do menu
+test(login): adiciona teste de autenticação
+```
+
+## Principais tipos
+
+| Tipo       | Quando usar                |
+| ---------- | -------------------------- |
+| `feat`     | Nova funcionalidade        |
+| `fix`      | Correção de erro           |
+| `docs`     | Documentação               |
+| `style`    | Formatação ou aparência    |
+| `refactor` | Melhoria interna do código |
+| `test`     | Testes                     |
+| `chore`    | Manutenção                 |
+| `perf`     | Desempenho                 |
+| `build`    | Build ou compilação        |
+| `ci`       | Integração contínua        |
+
+## Escopo
+
+O escopo indica a parte do projeto afetada.
+
+```text
+fix(login): corrige erro no botão entrar
+    ↓       ↓
+   tipo   escopo
+```
+
+* `fix` → tipo da alteração
+* `login` → área afetada
+* `corrige erro no botão entrar` → descrição
+
+## Breaking Change
+
+Use `!` quando uma alteração quebra a compatibilidade com versões anteriores.
+
+```text
+feat(api)!: renomeia userName para fullName
+```
+
+O `!` indica uma alteração que pode exigir mudanças em outras partes do sistema.
+
+## Boas práticas
+
+* Seja específico.
+* Use verbos no presente.
+* Faça commits pequenos.
+* Um commit deve representar uma alteração.
+* Evite mensagens genéricas como `arrumei tudo`.
+* Pense em quem precisará entender o histórico futuramente.
+
+
+
+**Prefira:**
+
+```text
+fix(pagamento): corrige cálculo do frete
+```
+
+## Versionamento Semântico
+
+| Alteração       | Impacto |
+| --------------- | ------- |
+| `fix`           | PATCH   |
+| `feat`          | MINOR   |
+| Breaking Change | MAJOR   |
+
+Exemplo:
+
+```text
+1.2.0 + fix → 1.2.1
+1.2.0 + feat → 1.3.0
+1.2.0 + breaking change → 2.0.0
+```
+
+---
+
+# Branch
+
+Use branches para trabalhar em funcionalidades ou alterações sem modificar diretamente a `main`.
+
+### Criar uma branch
+
+```bash
+git checkout -b minha-branch
+git branch
+```
+
+* `git checkout -b` → cria e entra em uma nova branch
+* `git branch` → mostra as branches existentes
+* `*` → indica a branch atual
+
+### Salvar alterações na branch
+
+Depois de fazer as alterações:
+
+```bash
+git add .
+git commit -m "feat: adiciona nova funcionalidade"
+```
+
+---
+
+# GitHub
+
+### Conectar ao repositório
+
+```bash
+git remote add origin LINK
+git branch -M main
+git push -u origin main
+```
+
+### Enviar uma branch
+
+```bash
+git checkout minha-branch
+git push -u origin minha-branch
+```
+
+---
+
+# Pull Request
+
+Depois de enviar a branch para o GitHub:
+
+1. Acesse **Pull requests**.
+2. Clique em **New pull request**.
+3. Selecione:
+
+   * **Base:** `main`
+   * **Compare:** `minha-branch`
+4. Clique em **Create pull request**.
+5. Após a revisão, faça o **Merge**.
+
+O Pull Request permite revisar as alterações antes de juntá-las ao projeto principal.
+
+---
+
+# Atualizar o projeto
+
+Antes de continuar trabalhando, atualize sua `main`:
+
+```bash
+git checkout main
+git pull origin main
+```
+
+* `git checkout main` → entra na branch principal
+* `git pull origin main` → baixa as alterações mais recentes do GitHub
+
+  
+
+# Guia de Organização do Projeto
+
+Este guia mostra onde colocar cada arquivo e para que serve cada parte do projeto.
+
+---
+
+# Estrutura
 
 ```text
 FAZBEAR-S-PIZZA-PLACE/
 │
 ├── assets/
-│   │
 │   ├── audio/
-│   │   ├── abrircamera.mp3
-│   │   ├── buzina.mp3
-│   │   ├── ganhamo.mp3
-│   │   └── musica.mp3
-│   │
 │   └── imagem/
-│       ├── cam1.gif (1).gif
-│       ├── fnaf.telainicial.gif
-│       └── freddy.gif
 │
 ├── css/
 │   └── style.css
@@ -33,104 +213,24 @@ FAZBEAR-S-PIZZA-PLACE/
 │   └── script.js
 │
 ├── index.html
-│
 └── README.md
 ```
 
-Cada pasta possui uma função específica. Evite colocar arquivos fora de suas respectivas pastas.
+---
+
+# `index.html`
+
+Página principal do projeto.
+
+Responsável pela estrutura e conteúdo da página.
 
 ---
 
-# 2. Pasta `assets/`
+# `css/`
 
-A pasta `assets` é destinada aos arquivos utilizados pelo site que não são diretamente código.
+Pasta destinada aos arquivos de estilo do projeto.
 
-Dentro dela existem categorias para cada tipo de arquivo.
-
-```text
-assets/
-├── audio/
-└── imagem/
-```
-
-## `assets/audio/`
-
-Essa pasta deve conter os arquivos de áudio utilizados pelo site.
-
-Exemplos:
-
-```text
-assets/audio/abrircamera.mp3
-assets/audio/buzina.mp3
-assets/audio/ganhamo.mp3
-assets/audio/musica.mp3
-```
-
-Novos arquivos de áudio devem ser colocados dentro dessa pasta.
-
-Exemplo:
-
-```text
-assets/audio/novo-som.mp3
-```
-
-Não coloque arquivos `.mp3` diretamente na raiz do projeto.
-
-Errado:
-
-```text
-FAZBEAR-S-PIZZA-PLACE/
-├── musica.mp3
-```
-
-Correto:
-
-```text
-FAZBEAR-S-PIZZA-PLACE/
-└── assets/
-    └── audio/
-        └── musica.mp3
-```
-
----
-
-## `assets/imagem/`
-
-Essa pasta deve conter as imagens utilizadas pelo site.
-
-Exemplos:
-
-```text
-assets/imagem/fnaf.telainicial.gif
-assets/imagem/freddy.gif
-```
-
-Novas imagens devem ser adicionadas nessa pasta.
-
-Exemplo:
-
-```text
-assets/imagem/bonnie.gif
-assets/imagem/chica.png
-assets/imagem/background.jpg
-```
-
-Evite colocar imagens diretamente na raiz do projeto.
-
----
-
-# 3. Pasta `css/`
-
-A pasta `css` contém os arquivos responsáveis pela aparência do site.
-
-Atualmente:
-
-```text
-css/
-└── style.css
-```
-
-O arquivo `style.css` deve conter as regras de estilo da página, como:
+Use para:
 
 * Cores
 * Fontes
@@ -139,601 +239,162 @@ O arquivo `style.css` deve conter as regras de estilo da página, como:
 * Posicionamento
 * Animações
 * Responsividade
-* Efeitos visuais
 
-Exemplo:
+Arquivo principal:
 
 ```text
 css/style.css
 ```
 
-Caso futuramente seja necessário separar os estilos, novos arquivos CSS devem continuar dentro da pasta `css`.
-
-Exemplo:
-
-```text
-css/
-├── style.css
-├── menu.css
-└── animacoes.css
-```
-
 ---
 
-# 4. Pasta `js/`
+# `js/`
 
-A pasta `js` contém os arquivos JavaScript responsáveis pela lógica e interações do site.
+Pasta destinada aos arquivos JavaScript.
 
-Atualmente:
-
-```text
-js/
-└── script.js
-```
-
-O arquivo `script.js` pode conter funcionalidades como:
+Use para:
 
 * Botões
-* Eventos de clique
+* Eventos
+* Interações
+* Funções
+* Animações
 * Sons
-* Animações controladas por JavaScript
-* Alteração de elementos HTML
-* Interações com o usuário
-* Outras funcionalidades do site
+* Comportamentos da página
 
-Novos arquivos JavaScript devem ser colocados dentro da pasta `js`.
-
-Exemplo:
-
-```text
-js/
-├── script.js
-├── camera.js
-└── menu.js
-```
-
----
-
-# 5. Arquivo `index.html`
-
-O `index.html` é a página principal do projeto.
-
-Ele é responsável pela estrutura HTML da página.
-
-Exemplo de organização:
-
-```text
-index.html
-```
-
-O HTML deve ser utilizado para estruturar o conteúdo.
-
-A aparência deve ficar no CSS:
-
-```text
-css/style.css
-```
-
-E as funcionalidades devem ficar no JavaScript:
+Arquivo principal:
 
 ```text
 js/script.js
 ```
 
-Evite colocar grandes quantidades de CSS ou JavaScript diretamente dentro do HTML se o código puder ser separado nos arquivos correspondentes.
-
 ---
 
-# 6. Como fazer os caminhos dos arquivos
+# `assets/`
 
-Uma das partes mais importantes da organização é utilizar o caminho correto para acessar imagens, áudios, CSS e JavaScript.
-
-O caminho depende da localização do arquivo que está tentando acessar.
-
----
-
-## 6.1 Caminho do HTML para o CSS
-
-O `index.html` está na raiz do projeto:
-
-```text
-FAZBEAR-S-PIZZA-PLACE/
-├── css/
-│   └── style.css
-└── index.html
-```
-
-Para acessar o CSS:
-
-```html
-<link rel="stylesheet" href="./css/style.css">
-```
-
-O `./` significa que estamos começando na pasta atual.
-
----
-
-# 7. Caminho do HTML para o JavaScript
-
-O mesmo princípio é utilizado para o JavaScript.
-
-```text
-FAZBEAR-S-PIZZA-PLACE/
-├── js/
-│   └── script.js
-└── index.html
-```
-
-Use:
-
-```html
-<script src="./js/script.js"></script>
-```
-
----
-
-# 8. Caminho do HTML para uma imagem
-
-Supondo que exista:
+Pasta destinada aos arquivos utilizados pelo projeto.
 
 ```text
 assets/
+├── audio/
 └── imagem/
-    └── freddy.gif
-```
-
-O caminho a partir do `index.html` será:
-
-```html
-<img src="./assets/imagem/freddy.gif">
-```
-
-Outro exemplo:
-
-```html
-<img src="./assets/imagem/fnaf.telainicial.gif">
 ```
 
 ---
 
-# 9. Caminho do HTML para um áudio
+# `assets/audio/`
 
-Para acessar:
+Coloque aqui todos os arquivos de áudio do projeto.
 
-```text
-assets/
-└── audio/
-    └── musica.mp3
-```
-
-Use:
-
-```html
-<audio src="./assets/audio/musica.mp3"></audio>
-```
-
-Ou, utilizando JavaScript:
-
-```javascript
-const musica = new Audio("./assets/audio/musica.mp3");
-```
-
----
-
-# 10. O que significa `./`?
-
-O:
+Exemplos de arquivos:
 
 ```text
-./
-```
-
-significa "a partir da pasta atual".
-
-Como o `index.html` está na raiz:
-
-```text
-FAZBEAR-S-PIZZA-PLACE/
-└── index.html
-```
-
-Podemos acessar:
-
-```text
-./css/style.css
-./js/script.js
-./assets/imagem/freddy.gif
-./assets/audio/musica.mp3
-```
-
----
-
-# 11. O que significa `../`?
-
-O:
-
-```text
-../
-```
-
-significa voltar uma pasta.
-
-Por exemplo, imagine que exista:
-
-```text
-FAZBEAR-S-PIZZA-PLACE/
-├── css/
-│   └── style.css
-└── assets/
-    └── imagem/
-        └── freddy.gif
-```
-
-Se o `style.css` precisar acessar a imagem `freddy.gif`, ele está dentro de:
-
-```text
-css/
-```
-
-Para voltar para a raiz:
-
-```text
-../
-```
-
-Depois podemos entrar em:
-
-```text
-assets/imagem/
-```
-
-Então o caminho será:
-
-```css
-background-image: url("../assets/imagem/freddy.gif");
-```
-
-Resumo:
-
-```text
-./   = pasta atual
-../  = volta uma pasta
-```
-
----
-
-# 12. Cuidado com os caminhos
-
-Os caminhos precisam corresponder exatamente à estrutura das pastas.
-
-Por exemplo, se o arquivo estiver em:
-
-```text
-assets/imagem/freddy.gif
-```
-
-Não utilize:
-
-```html
-<img src="./imagem/freddy.gif">
-```
-
-O caminho correto é:
-
-```html
-<img src="./assets/imagem/freddy.gif">
-```
-
-Também é importante prestar atenção ao nome do arquivo.
-
-Por exemplo:
-
-```text
-freddy.gif
-```
-
-é diferente de:
-
-```text
-Freddy.gif
-```
-
-Dependendo do ambiente onde o projeto estiver sendo executado, diferenças de maiúsculas e minúsculas podem causar problemas.
-
----
-
-# 13. Regras para nomes de arquivos
-
-Sempre que possível, utilize nomes simples e organizados.
-
-Prefira:
-
-```text
-freddy.gif
-camera.js
-menu.css
 musica.mp3
+buzina.mp3
+efeito.wav
 ```
 
-Evite:
+Formatos recomendados:
 
 ```text
-Imagem Nova Final 2.gif
-arquivo novo (1).js
-teste FINAL REAL.css
+.mp3
+.wav
+.ogg
 ```
 
-Recomenda-se utilizar:
+---
 
-* Letras minúsculas
-* Números quando necessário
-* Hífen `-` ou underscore `_`
-* Sem espaços
-* Sem caracteres especiais
+# `assets/imagem/`
 
-Exemplo recomendado:
+Coloque aqui todas as imagens e GIFs utilizados no projeto.
+
+Exemplos:
 
 ```text
-camera-principal.gif
-efeito-porta.mp3
-menu-principal.css
+freddy.gif
+cam1.gif
+fnaf.telainicial.gif
 ```
 
----
-
-# 14. Comandos básicos do Git
-
-## Verificar o estado do projeto
-
-```bash
-git status
-```
-
-Mostra quais arquivos foram modificados, adicionados ou removidos.
-
----
-
-## Baixar as alterações do GitHub
-
-Antes de começar a trabalhar, é recomendado atualizar seu projeto:
-
-```bash
-git pull
-```
-
-Isso baixa as alterações que outras pessoas enviaram para o repositório.
-
----
-
-## Adicionar alterações
-
-Para adicionar todos os arquivos modificados:
-
-```bash
-git add .
-```
-
-Para adicionar apenas um arquivo:
-
-```bash
-git add index.html
-```
-
----
-
-# 15. Commit
-
-Depois de adicionar os arquivos:
-
-```bash
-git commit -m "mensagem"
-```
-
-Exemplo:
-
-```bash
-git commit -m "feat: adicionar câmera de segurança"
-```
-
-A mensagem deve explicar de forma curta o que foi alterado.
-
----
-
-# 16. Tipos de commit
-
-Utilize os prefixos conforme o tipo de alteração.
-
-### `feat`
-
-Utilizado para uma nova funcionalidade.
-
-```bash
-git commit -m "feat: adicionar sistema de câmeras"
-```
-
-### `fix`
-
-Utilizado para corrigir um problema.
-
-```bash
-git commit -m "fix: corrigir caminho das imagens"
-```
-
-### `refactor`
-
-Utilizado para reorganizar ou melhorar o código sem adicionar uma nova funcionalidade.
-
-```bash
-git commit -m "refactor: reorganizar código do script"
-```
-
-### `style`
-
-Utilizado para alterações visuais ou de formatação que não mudam a lógica.
-
-```bash
-git commit -m "style: ajustar layout da página"
-```
-
-### `docs`
-
-Utilizado para documentação.
-
-```bash
-git commit -m "docs: atualizar README"
-```
-
-### `chore`
-
-Utilizado para tarefas de manutenção.
-
-```bash
-git commit -m "chore: organizar arquivos do projeto"
-```
-
----
-
-# 17. Enviar alterações para o GitHub
-
-Depois do commit:
-
-```bash
-git push
-```
-
-Exemplo completo:
-
-```bash
-git add .
-git commit -m "feat: adicionar nova animação"
-git push
-```
-
----
-
-# 18. Trabalhando com branches
-
-Para criar uma nova branch:
-
-```bash
-git branch nome-da-branch
-```
-
-Para entrar nela:
-
-```bash
-git switch nome-da-branch
-```
-
-Também é possível criar e entrar na branch diretamente:
-
-```bash
-git switch -c nome-da-branch
-```
-
-Exemplo:
-
-```bash
-git switch -c feature-camera
-```
-
-Depois das alterações:
-
-```bash
-git add .
-git commit -m "feat: adicionar sistema de câmera"
-git push -u origin feature-camera
-```
-
----
-
-# 19. Fluxo recomendado para a equipe
-
-Antes de começar:
-
-```bash
-git pull
-```
-
-Depois faça suas alterações.
-
-Quando terminar:
-
-```bash
-git status
-git add .
-git commit -m "tipo: descrição"
-git push
-```
-
-Exemplo:
-
-```bash
-git pull
-```
+Formatos comuns:
 
 ```text
-Fazer alterações no projeto
-```
-
-```bash
-git status
-git add .
-git commit -m "feat: adicionar efeito sonoro"
-git push
+.png
+.jpg
+.jpeg
+.gif
+.webp
 ```
 
 ---
 
-# 20. Onde colocar cada arquivo?
+# `README.md`
 
-| Tipo de arquivo | Pasta              |
-| --------------- | ------------------ |
-| HTML principal  | Raiz               |
-| CSS             | `css/`             |
-| JavaScript      | `js/`              |
-| Imagens         | `assets/imagem/`   |
-| Áudios          | `assets/audio/`    |
-| Documentação    | Raiz / `README.md` |
+Arquivo de documentação do projeto.
 
-Exemplo:
+Pode conter:
 
-```text
-FAZBEAR-S-PIZZA-PLACE/
-│
-├── assets/
-│   ├── audio/
-│   │   └── sons.mp3
-│   │
-│   └── imagem/
-│       └── personagem.gif
-│
-├── css/
-│   └── style.css
-│
-├── js/
-│   └── script.js
-│
-├── index.html
-│
-└── README.md
-```
+* Informações do projeto
+* Guias
+* Organização dos arquivos
+* Regras da equipe
+* Instruções
+* Informações importantes
 
 ---
 
-# 21. Regra principal
+# Caminhos
 
-Antes de adicionar qualquer arquivo ao projeto, verifique qual é a função dele.
+Os caminhos dependem da pasta onde o arquivo está localizado.
 
 ```text
-HTML       → raiz
-CSS        → css/
-JavaScript → js/
-Imagens    → assets/imagem/
-Áudios     → assets/audio/
-Documentação → README.md
+index.html
+│
+├── css/style.css
+├── js/script.js
+├── assets/imagem/
+└── assets/audio/
 ```
 
-A organização correta dos arquivos facilita o trabalho de toda a equipe, evita caminhos quebrados e torna o projeto mais fácil de manter.
+### `./`
 
-**Mantenha a estrutura organizada e não mova arquivos de outras pastas sem necessidade.**
+Representa a pasta atual.
+
+### `../`
+
+Volta uma pasta.
+
+Isso é importante principalmente nos arquivos que estão dentro de `css/` ou `js/`.
+
+---
+
+# Onde colocar cada coisa?
+
+| O que você está fazendo | Onde colocar     |
+| ----------------------- | ---------------- |
+| Estrutura da página     | `index.html`     |
+| Cores e aparência       | `css/`           |
+| Funções e interações    | `js/`            |
+| Imagens                 | `assets/imagem/` |
+| GIFs                    | `assets/imagem/` |
+| Música                  | `assets/audio/`  |
+| Efeitos sonoros         | `assets/audio/`  |
+| Documentação            | `README.md`      |
+
+---
+
+# Regra rápida
+
+```text
+HTML          → index.html
+CSS           → css/
+JavaScript    → js/
+Imagens/GIFs  → assets/imagem/
+Áudios        → assets/audio/
+Documentação  → README.md
+```
+
+**Não misture arquivos.**
+
+Cada arquivo deve ficar na pasta correspondente.
+
