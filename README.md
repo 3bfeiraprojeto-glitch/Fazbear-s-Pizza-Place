@@ -6,17 +6,12 @@ Guia rápido para trabalhar com Git
 
 ### Iniciar o Git
 
-```bash
-git init
-git status
-git add .
-git commit -m "primeiro commit"
-```
 
 * `git init` → inicia o Git
 * `git status` → verifica alterações
 * `git add .` → prepara os arquivos
 * `git commit` → registra as alterações
+* `git pull` →  Baixa e junta as atualizações do repositório remoto para a sua máquina
 
 ---
 
