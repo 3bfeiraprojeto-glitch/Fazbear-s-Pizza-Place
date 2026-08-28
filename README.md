@@ -392,5 +392,5 @@ Documentação  → README.md
 
 **Não misture arquivos.**
 
-Cada arquivo deve ficar na pasta correspondente.
+Cada arquivo deve ficar na pasta correspondente....
 
