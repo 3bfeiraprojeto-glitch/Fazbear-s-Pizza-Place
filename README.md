@@ -12,6 +12,7 @@ Guia rápido para trabalhar com Git
 * `git add .` → prepara os arquivos
 * `git commit` → registra as alterações
 * `git pull` →  Baixa e junta as atualizações do repositório remoto para a sua máquina
+* `git fetch` → baixa os commits, arquivos e referências mais recentes de um repositório remoto para o seu repositório local, sem alterar ou mesclar nada no seu código de trabalho atual
 
 ---
 
