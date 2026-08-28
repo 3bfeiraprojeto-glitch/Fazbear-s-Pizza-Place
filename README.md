@@ -1,18 +1,19 @@
 # Guia de Git, Commits, Branch e Pull Request
 
-Guia rápido para trabalhar com Git 
+Guia rápido para trabalhar com Git e GitHub no projeto.
 
-## Git básico
+---
+
+# Git básico
 
 ### Iniciar o Git
-
 
 * `git init` → inicia o Git
 * `git status` → verifica alterações
 * `git add .` → prepara os arquivos
 * `git commit` → registra as alterações
-* `git pull` →  Baixa e junta as atualizações do repositório remoto para a sua máquina
-* `git fetch` → baixa os commits, arquivos e referências mais recentes de um repositório remoto para o seu repositório local, sem alterar ou mesclar nada no seu código de trabalho atual
+* `git pull` → baixa e junta as atualizações do repositório remoto
+* `git fetch` → baixa informações do repositório remoto sem alterar os arquivos atuais
 
 ---
 
@@ -20,47 +21,44 @@ Guia rápido para trabalhar com Git
 
 Use commits padronizados para manter o histórico do projeto organizado.
 
-### Estrutura
+## Estrutura
 
-```text
-tipo(escopo): descrição
-```
+`tipo(escopo): descrição`
 
-### Exemplos
+## Exemplos
 
-```text
-feat(profile): adiciona histórico de pedidos
-fix(login): corrige erro no botão entrar
-docs(readme): atualiza instruções
-refactor(api): reorganiza funções
-style(header): ajusta alinhamento do menu
-test(login): adiciona teste de autenticação
-```
+`feat(profile): adiciona histórico de pedidos`
+
+`fix(login): corrige erro no botão entrar`
+
+`docs(readme): atualiza instruções`
+
+`refactor(api): reorganiza funções`
+
+`style(header): ajusta alinhamento do menu`
+
+`test(login): adiciona teste de autenticação`
 
 ## Principais tipos
 
-| Tipo       | Quando usar                |
-| ---------- | -------------------------- |
-| `feat`     | Nova funcionalidade        |
-| `fix`      | Correção de erro           |
-| `docs`     | Documentação               |
-| `style`    | Formatação ou aparência    |
+| Tipo | Quando usar |
+|------|-------------|
+| `feat` | Nova funcionalidade |
+| `fix` | Correção de erro |
+| `docs` | Documentação |
+| `style` | Formatação ou aparência |
 | `refactor` | Melhoria interna do código |
-| `test`     | Testes                     |
-| `chore`    | Manutenção                 |
-| `perf`     | Desempenho                 |
-| `build`    | Build ou compilação        |
-| `ci`       | Integração contínua        |
+| `test` | Testes |
+| `chore` | Manutenção |
+| `perf` | Desempenho |
+| `build` | Build ou compilação |
+| `ci` | Integração contínua |
 
 ## Escopo
 
 O escopo indica a parte do projeto afetada.
 
-```text
-fix(login): corrige erro no botão entrar
-    ↓       ↓
-   tipo   escopo
-```
+`fix(login): corrige erro no botão entrar`
 
 * `fix` → tipo da alteração
 * `login` → área afetada
@@ -70,13 +68,11 @@ fix(login): corrige erro no botão entrar
 
 Use `!` quando uma alteração quebra a compatibilidade com versões anteriores.
 
-```text
-feat(api)!: renomeia userName para fullName
-```
+`feat(api)!: renomeia userName para fullName`
 
 O `!` indica uma alteração que pode exigir mudanças em outras partes do sistema.
 
-## Boas práticas
+## Boas práticas para commits
 
 * Seja específico.
 * Use verbos no presente.
@@ -85,107 +81,394 @@ O `!` indica uma alteração que pode exigir mudanças em outras partes do siste
 * Evite mensagens genéricas como `arrumei tudo`.
 * Pense em quem precisará entender o histórico futuramente.
 
+Prefira:
 
+`fix(pagamento): corrige cálculo do frete`
 
-**Prefira:**
+---
 
-```text
-fix(pagamento): corrige cálculo do frete
-```
+# Versionamento Semântico
 
-## Versionamento Semântico
-
-| Alteração       | Impacto |
-| --------------- | ------- |
-| `fix`           | PATCH   |
-| `feat`          | MINOR   |
-| Breaking Change | MAJOR   |
+| Alteração | Impacto |
+|-----------|---------|
+| `fix` | PATCH |
+| `feat` | MINOR |
+| Breaking Change | MAJOR |
 
 Exemplo:
 
+`1.2.0 + fix → 1.2.1`
+
+`1.2.0 + feat → 1.3.0`
+
+`1.2.0 + breaking change → 2.0.0`
+
+---
+
+# Branches do Projeto
+
+O projeto possui branches separadas para cada área da equipe.
+
 ```text
-1.2.0 + fix → 1.2.1
-1.2.0 + feat → 1.3.0
-1.2.0 + breaking change → 2.0.0
+main
+├── front-end
+├── back-end
+├── inteligência-artificial
+└── versionamento
 ```
+
+## `main`
+
+A `main` é a branch principal do projeto.
+
+As alterações importantes e aprovadas devem ficar nela.
+
+**Não faça alterações diretamente na `main`.**
 
 ---
 
-# Branch
+## `front-end`
 
-Use branches para trabalhar em funcionalidades ou alterações sem modificar diretamente a `main`.
+Branch destinada ao desenvolvimento do Front-end.
 
-### Criar uma branch
+Use para trabalhar com:
 
-```bash
-git checkout -b minha-branch
-git branch
-```
-
-* `git checkout -b` → cria e entra em uma nova branch
-* `git branch` → mostra as branches existentes
-* `*` → indica a branch atual
-
-### Salvar alterações na branch
-
-Depois de fazer as alterações:
-
-```bash
-git add .
-git commit -m "feat: adiciona nova funcionalidade"
-```
+* HTML
+* CSS
+* JavaScript
+* Interface
+* Responsividade
 
 ---
 
-# GitHub
+## `back-end`
 
-### Conectar ao repositório
+Branch destinada ao desenvolvimento do Back-end.
 
-```bash
-git remote add origin LINK
-git branch -M main
-git push -u origin main
-```
+Use para trabalhar com:
 
-### Enviar uma branch
-
-```bash
-git checkout minha-branch
-git push -u origin minha-branch
-```
+* Servidor
+* APIs
+* Banco de dados
+* Lógica do sistema
 
 ---
 
-# Pull Request
+## `inteligência-artificial`
 
-Depois de enviar a branch para o GitHub:
+Branch destinada às funcionalidades relacionadas à Inteligência Artificial.
 
-1. Acesse **Pull requests**.
-2. Clique em **New pull request**.
-3. Selecione:
+---
 
-   * **Base:** `main`
-   * **Compare:** `minha-branch`
-4. Clique em **Create pull request**.
-5. Após a revisão, faça o **Merge**.
+## `versionamento`
 
-O Pull Request permite revisar as alterações antes de juntá-las ao projeto principal.
+Branch utilizada pela pessoa responsável pelo versionamento e revisão do código.
+
+---
+
+# Como entrar na sua Branch
+
+## 1. Verificar as branches
+
+Abra o terminal no VS Code e execute:
+
+`git branch`
+
+O resultado pode ser parecido com:
+
+```text
+  back-end
+  front-end
+  main
+* versionamento
+```
+
+O símbolo `*` indica a branch em que você está trabalhando.
+
+---
+
+## 2. Entrar na sua branch
+
+### Front-end
+
+`git checkout front-end`
+
+### Back-end
+
+`git checkout back-end`
+
+### Inteligência Artificial
+
+`git checkout inteligência-artificial`
+
+### Versionamento
+
+`git checkout versionamento`
+
+### Main
+
+`git checkout main`
+
+---
+
+# Antes de começar a trabalhar
+
+Antes de alterar qualquer arquivo, entre na sua branch e atualize o projeto.
+
+Exemplo para o Front-end:
+
+`git checkout front-end`
+
+`git pull origin front-end`
+
+Exemplo para o Back-end:
+
+`git checkout back-end`
+
+`git pull origin back-end`
+
+Isso ajuda a garantir que você está trabalhando na versão mais recente da sua branch.
+
+---
+
+# Como salvar suas alterações
+
+Depois de realizar suas alterações:
+
+## 1. Verificar o que foi alterado
+
+`git status`
+
+## 2. Adicionar os arquivos
+
+`git add .`
+
+## 3. Criar o commit
+
+`git commit -m "feat: adicionar nova funcionalidade"`
+
+## 4. Enviar para o GitHub
+
+`git push`
+
+---
+
+# Como criar um Pull Request
+
+Depois de enviar suas alterações para o GitHub:
+
+## 1. Acesse o GitHub
+
+Entre no repositório pelo navegador.
+
+## 2. Vá em Pull requests
+
+Clique em:
+
+`Pull requests`
+
+Depois:
+
+`New pull request`
+
+## 3. Escolha as branches
+
+Selecione:
+
+`Base: versionamento`
+
+`Compare: sua-branch`
+
+Exemplo para o Front-end:
+
+```text
+front-end
+    ↓
+Pull Request
+    ↓
+versionamento
+```
+
+Exemplo para o Back-end:
+
+```text
+back-end
+    ↓
+Pull Request
+    ↓
+versionamento
+```
+
+## 4. Crie o Pull Request
+
+Clique em:
+
+`Create pull request`
+
+Explique resumidamente o que foi alterado.
+
+---
+
+# Revisão do Pull Request
+
+A pessoa responsável pelo versionamento irá revisar as alterações.
+
+Existem duas possibilidades.
+
+## Aprovar
+
+Se o código estiver correto:
+
+`Approve`
+
+O Pull Request poderá continuar para o processo de merge.
+
+---
+
+## Solicitar alterações
+
+Se existirem problemas:
+
+`Request changes`
+
+A pessoa responsável pelo desenvolvimento deverá corrigir os problemas.
+
+Depois de corrigir:
+
+`git add .`
+
+`git commit -m "fix: corrigir alterações solicitadas"`
+
+`git push`
+
+O Pull Request será atualizado automaticamente.
+
+Não é necessário criar outro Pull Request.
+
+---
+
+# Como funciona o Merge
+
+O fluxo do projeto funciona assim:
+
+```text
+Desenvolvedor
+      ↓
+Trabalha na sua branch
+      ↓
+Faz commit
+      ↓
+git push
+      ↓
+Cria Pull Request
+      ↓
+versionamento
+      ↓
+Revisão
+      ↓
+┌─────────────────┐
+│ Approve         │
+│       ou        │
+│ Request changes │
+└─────────────────┘
+      ↓
+Se aprovado
+      ↓
+Merge
+      ↓
+versionamento
+```
+
+Depois que as alterações forem revisadas e organizadas:
+
+```text
+versionamento
+      ↓
+Pull Request
+      ↓
+main
+```
+
+Assim, a `main` recebe apenas alterações que passaram pela revisão.
+
+---
+
+# Fluxo completo
+
+```text
+front-end
+    │
+    ├── Faz alterações
+    ├── Commit
+    ├── Push
+    │
+    ▼
+Pull Request
+    │
+    ▼
+versionamento
+    │
+    ▼
+Revisão
+    │
+    ├── Request changes
+    │         │
+    │         ▼
+    │      Corrigir
+    │         │
+    │         ▼
+    │      Novo push
+    │
+    └── Approve
+          │
+          ▼
+        Merge
+          │
+          ▼
+     versionamento
+          │
+          ▼
+     Pull Request
+          │
+          ▼
+         main
+```
 
 ---
 
 # Atualizar o projeto
 
-Antes de continuar trabalhando, atualize sua `main`:
+Antes de continuar trabalhando, atualize sua branch.
 
-```bash
-git checkout main
-git pull origin main
-```
+Exemplo:
 
-* `git checkout main` → entra na branch principal
-* `git pull origin main` → baixa as alterações mais recentes do GitHub
+`git checkout front-end`
 
-  
+`git pull origin front-end`
+
+Para atualizar a `main`:
+
+`git checkout main`
+
+`git pull origin main`
+
+---
+
+# Boas práticas com Git
+
+* Não faça alterações diretamente na `main`.
+* Trabalhe sempre na branch da sua área.
+* Antes de começar, use `git pull`.
+* Verifique suas alterações com `git status`.
+* Faça commits pequenos e organizados.
+* Use Conventional Commits.
+* Não use mensagens como `teste`, `atualização` ou `arrumei`.
+* Explique claramente o que foi alterado.
+* Revise suas alterações antes do commit.
+* Resolva os problemas solicitados no Pull Request.
+* Não faça merge sem seguir o processo de revisão.
+
+---
 
 # Guia de Organização do Projeto
 
@@ -238,9 +521,7 @@ Use para:
 
 Arquivo principal:
 
-```text
-css/style.css
-```
+`css/style.css`
 
 ---
 
@@ -260,9 +541,7 @@ Use para:
 
 Arquivo principal:
 
-```text
-js/script.js
-```
+`js/script.js`
 
 ---
 
@@ -282,21 +561,21 @@ assets/
 
 Coloque aqui todos os arquivos de áudio do projeto.
 
-Exemplos de arquivos:
+Exemplos:
 
-```text
-musica.mp3
-buzina.mp3
-efeito.wav
-```
+`musica.mp3`
+
+`buzina.mp3`
+
+`efeito.wav`
 
 Formatos recomendados:
 
-```text
-.mp3
-.wav
-.ogg
-```
+`.mp3`
+
+`.wav`
+
+`.ogg`
 
 ---
 
@@ -306,21 +585,23 @@ Coloque aqui todas as imagens e GIFs utilizados no projeto.
 
 Exemplos:
 
-```text
-freddy.gif
-cam1.gif
-fnaf.telainicial.gif
-```
+`freddy.gif`
+
+`cam1.gif`
+
+`fnaf.telainicial.gif`
 
 Formatos comuns:
 
-```text
-.png
-.jpg
-.jpeg
-.gif
-.webp
-```
+`.png`
+
+`.jpg`
+
+`.jpeg`
+
+`.gif`
+
+`.webp`
 
 ---
 
@@ -366,16 +647,16 @@ Isso é importante principalmente nos arquivos que estão dentro de `css/` ou `j
 
 # Onde colocar cada coisa?
 
-| O que você está fazendo | Onde colocar     |
-| ----------------------- | ---------------- |
-| Estrutura da página     | `index.html`     |
-| Cores e aparência       | `css/`           |
-| Funções e interações    | `js/`            |
-| Imagens                 | `assets/imagem/` |
-| GIFs                    | `assets/imagem/` |
-| Música                  | `assets/audio/`  |
-| Efeitos sonoros         | `assets/audio/`  |
-| Documentação            | `README.md`      |
+| O que você está fazendo | Onde colocar |
+|-------------------------|--------------|
+| Estrutura da página | `index.html` |
+| Cores e aparência | `css/` |
+| Funções e interações | `js/` |
+| Imagens | `assets/imagem/` |
+| GIFs | `assets/imagem/` |
+| Música | `assets/audio/` |
+| Efeitos sonoros | `assets/audio/` |
+| Documentação | `README.md` |
 
 ---
 
@@ -393,6 +674,3 @@ Documentação  → README.md
 **Não misture arquivos.**
 
 Cada arquivo deve ficar na pasta correspondente.
-
-TESTE git
-
