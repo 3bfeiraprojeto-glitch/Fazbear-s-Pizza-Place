@@ -1,0 +1,74 @@
+Tenho um projeto escolar chamado Fazbear's Pizza Place, inspirado no universo de Five Nights at Freddy's. O site já está desenvolvido em HTML, CSS e JavaScript e possui um chatbot de atendimento.
+
+Não temos acesso às APIs de inteligência artificial na rede da escola, então o chatbot precisa funcionar 100% offline, sem API, sem servidor externo e sem chave de acesso. Quero simular um assistente inteligente utilizando somente JavaScript, condicionais, palavras-chave, intenções, aliases/sinônimos, base de conhecimento, tolerância simples a erros de digitação e uma memória básica do contexto da conversa.
+
+Quero que você analise os arquivos do projeto antes de alterar qualquer coisa e preserve o estilo visual existente.
+
+Melhore o chatbot para que ele consiga responder tanto perguntas sobre a nossa pizzaria do projeto quanto perguntas sobre todo o universo de Five Nights at Freddy's, incluindo os FILMES e principalmente a HISTÓRIA DOS JOGOS E DOS ANIMATRONICS.
+
+Pesquise informações confiáveis e atualizadas na internet, priorizando fontes oficiais como páginas dos jogos, desenvolvedores e materiais oficiais. Não invente informações para preencher lacunas.
+
+É obrigatório separar três tipos de informação:
+1. nossa pizzaria do projeto escolar;
+2. continuidade dos filmes;
+3. continuidade dos jogos.
+
+Cardápio, preços, reservas, setores, vagas e outras informações comerciais pertencem somente ao nosso protótipo escolar e nunca devem ser apresentados como informações oficiais de FNAF.
+
+Os filmes e os jogos são continuidades diferentes. Quando o usuário perguntar algo como “Quem é William Afton?” ou “Quem é Freddy?” sem especificar o universo, o chatbot pode apresentar uma resposta dividida em “NOS JOGOS” e “NOS FILMES”. Se o usuário escrever “nos jogos” ou “nos filmes”, responda somente sobre aquela continuidade.
+
+Amplie a base dos jogos para incluir, no mínimo:
+- Five Nights at Freddy's 1;
+- Five Nights at Freddy's 2;
+- Five Nights at Freddy's 3;
+- Five Nights at Freddy's 4;
+- Sister Location;
+- Freddy Fazbear's Pizzeria Simulator / FNAF 6;
+- Ultimate Custom Night;
+- Help Wanted;
+- Security Breach;
+- Security Breach — Ruin;
+- Help Wanted 2;
+- Into the Pit;
+- Secret of the Mimic.
+
+O chatbot deve conseguir explicar a história geral e a ordem de lançamento dos jogos, a cronologia aproximada, os principais locais da franquia, a família Afton, a família Emily, a Mordida de 83, a Mordida de 87, os springlocks, as crianças desaparecidas, a Puppet, a fase digital da Fazbear, o Pizzaplex e a origem/importância do Mimic.
+
+Inclua respostas individuais e por grupos para os principais animatronics e personagens, como:
+- Freddy, Bonnie, Chica, Foxy e Golden Freddy;
+- Withered Freddy, Bonnie, Chica e Foxy;
+- Toy Freddy, Toy Bonnie, Toy Chica, Mangle e Balloon Boy;
+- Puppet/Marionette;
+- Fredbear e Spring Bonnie;
+- Springtrap e Phantoms;
+- Nightmare Freddy, Bonnie, Chica, Foxy e Nightmare Fredbear;
+- Circus Baby, Ballora, Funtime Freddy, Bon-Bon, Funtime Foxy e Ennard;
+- Scrap Baby, Molten Freddy, Afton/Scraptrap e Lefty;
+- Glitchtrap;
+- Glamrock Freddy, Glamrock Chica, Roxanne Wolf e Montgomery Gator;
+- Sun, Moon/Eclipse, DJ Music Man e S.T.A.F.F. Bots;
+- Mimic;
+- William Afton, Michael Afton, Elizabeth Afton, Crying Child/Bite Victim, Henry Emily, Charlotte Emily, Jeremy Fitzgerald, Gregory, Cassie, Vanessa/Vanny e Edwin Murray.
+
+Não trate teorias de fãs como fatos. Sempre que uma informação for debatida, deixe isso claro. Exemplos: não diga que Mangle definitivamente causou a Mordida de 87; não atribua um nome definitivo ao Crying Child se isso depender de teoria; não simplifique debates complexos sobre Golden Freddy ou Glitchtrap como se fossem totalmente resolvidos.
+
+A parte envolvendo William Afton e crianças deve continuar correta, mas resumida e apropriada para um projeto escolar. Não crie uma história falsa para suavizar os fatos; apenas evite detalhes gráficos e desnecessários.
+
+Organize a base de conhecimento de forma didática. Se possível, deixe a lore dos jogos em um arquivo JavaScript separado, por exemplo game-lore.js, para que os alunos consigam adicionar novos jogos, personagens, aliases e respostas sem mexer no motor principal do chatbot.
+
+Quero que o chatbot reconheça diferentes maneiras de fazer a mesma pergunta, pequenos erros de digitação e perguntas de continuação como “e ele?”, “e ela?” ou “fala mais”.
+
+Se o bot não encontrar uma resposta confiável cadastrada, ele deve dizer que ainda não possui aquela informação em vez de inventar.
+
+Depois de alterar o projeto:
+- verifique erros de sintaxe no JavaScript;
+- teste perguntas sobre filmes, jogos, animatronics e pizzaria;
+- crie um arquivo com perguntas de teste;
+- explique quais arquivos foram modificados;
+- explique como integrar essa versão ao site principal;
+- ensine passo a passo como criar uma branch, git add, commit, push e Pull Request no GitHub;
+- gere um ZIP final pronto para baixar.
+
+
+ATUALIZAÇÃO VISUAL OBRIGATÓRIA:
+O personagem/mascote do chatbot deve ser o Helpy fornecido nos arquivos do projeto. Preserve as animações WebP existentes do Helpy e o visual do componente: personagem grande flutuante, animações de repouso, pensamento no hover, clique, arrastar pela tela, queda ao soltar e animação de impacto. O Helpy deve abrir o chatbot ao ser clicado. Esta alteração é apenas visual e de identidade: NÃO remova, reduza ou substitua a base de conhecimento já criada sobre a pizzaria, filmes, jogos, personagens, animatronics, fatos x teorias, aliases, tolerância a variações de pergunta e memória simples da conversa. O chatbot deve se apresentar como “Helpy • Fazbear Support” e continuar 100% offline, sem API.
